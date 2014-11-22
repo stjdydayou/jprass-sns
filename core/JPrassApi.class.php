@@ -25,8 +25,9 @@ class JPrassApi {
 		$config = "";
 		foreach ($args as $k => $v) {
 			if ($k > 0) {
-				if (isset($config[$v]))
+				if (isset($config[$v])){
 					$config = $config[$v];
+				}
 			} else {
 				if (!isset($GLOBALS['_JPRASS_CONFIG_'])) {
 					$GLOBALS['_JPRASS_CONFIG_'] = require_once(__JPRASS_CORE_DIR__ . '/Config.php');
@@ -34,8 +35,9 @@ class JPrassApi {
 						$GLOBALS['_JPRASS_CONFIG_'] = array_merge($GLOBALS['_JPRASS_CONFIG_'], require_once(__JPRASS_RUNTIME_PATH__ . '/Option.php'));
 					}
 				}
-				if (isset($GLOBALS['_JPRASS_CONFIG_'][$v]))
+				if (isset($GLOBALS['_JPRASS_CONFIG_'][$v])){
 					$config = $GLOBALS['_JPRASS_CONFIG_'][$v];
+				}
 			}
 		}
 		return $config;
