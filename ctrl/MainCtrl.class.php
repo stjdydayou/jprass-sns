@@ -9,10 +9,16 @@
  * @QQ			97142822
  * @version    1.0
  */
+require_once __JPRASS_SERVICE_DIR__ . '/UserService.class.php';
+
 class MainCtrl extends BaseCtrl {
 
 	public function index() {
-		$query = new Query("#_role", "t");
+		$userService = new UserService();
+		$user = $userService->findById(1000);
+		print_r($user);
+		print_r($user->toArray());
+		$userService->updateLastLoginTime(1000, time());
 		return "main";
 	}
 

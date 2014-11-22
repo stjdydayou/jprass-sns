@@ -11,6 +11,7 @@
  * @version    1.0
  */
 require_once __JPRASS_CORE_DIR__ . '/db/Mysql.class.php';
+require_once __JPRASS_CORE_DIR__ . '/db/BaseModel.class.php';
 require_once __JPRASS_CORE_DIR__ . '/exp/QueryException.class.php';
 
 class Query {
@@ -306,6 +307,9 @@ class Query {
 	public function add($data) {
 		$sql = "INSERT INTO `{$this->table}`";
 		$fields = $values = array();
+		if ($data instanceof BaseModel) {
+			$data = $data->toArray();
+		}
 		//遍历记录, 格式化字段名称与值
 		foreach ($data as $key => $val) {
 			$fields[] = "`{$this->table}`.`{$key}`";
@@ -335,6 +339,9 @@ class Query {
 		$field = $value = '';
 		$vals = array();
 		foreach ($datas as $data) {
+			if ($data instanceof BaseModel) {
+				$data = $data->toArray();
+			}
 			//遍历记录, 格式化字段名称与值
 			foreach ($data as $key => $val) {
 				$fields[] = "`{$this->table}`.`{$key}`";
@@ -383,6 +390,9 @@ class Query {
 		$where = is_null($where) ? $this->options['where'] : $where;
 		$sql = "UPDATE `{$this->table}` SET ";
 		$values = array();
+		if ($data instanceof BaseModel) {
+			$data = $data->toArray();
+		}
 		foreach ($data as $key => $val) {
 			$val = is_numeric($val) ? $val : "{$val}";
 			$values[] = $this->table . '.`' . $key . '` = "' . $val . '"';
@@ -413,6 +423,9 @@ class Query {
 			$this->options['where'] = $where;
 		} else {
 			$this->options['where'] = "";
+			if ($where instanceof BaseModel) {
+				$where = $where->toArray();
+			}
 			foreach ($where as $key => $value) {
 				if (isset($this->options['where']) && !empty($this->options['where'])) {
 					$this->options['where'] .= ' and ';
