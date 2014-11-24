@@ -23,7 +23,7 @@ class JPrassRun {
 
 		ob_start(); //控制输出
 		//设置运行时区
-		date_default_timezone_set("Etc/GMT" . (JPrassApi::C("blog.default_timezone") * -1));
+		date_default_timezone_set("Etc/GMT" . (JPrassApi::C("site.default_timezone") * -1));
 
 		//自动开启session
 		if (JPrassApi::C('auto_session')) {

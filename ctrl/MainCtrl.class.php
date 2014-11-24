@@ -14,15 +14,7 @@ require_once __JPRASS_SERVICE_DIR__ . '/UserService.class.php';
 class MainCtrl extends BaseCtrl {
 
 	public function index() {
-		echo "<pre />";
-		$userService = new UserService();
-		$user = $userService->findById(1000);
-		print_r($user);
-		print_r($user->toArray());
-		$userService->updateLastLoginTime(1000, time());
 		return "main";
 	}
 
 }
-
-?>

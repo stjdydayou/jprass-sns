@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2014-11-22 19:50:35
+<?php /* Smarty version Smarty-3.1.15, created on 2014-11-23 04:25:10
          compiled from "D:\PHProot\jprass-sns\tpl\main.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:257045470e90b96ac17-03013368%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '43a111f620c481fba707f5f315e59eb499bb9c89' => 
     array (
       0 => 'D:\\PHProot\\jprass-sns\\tpl\\main.tpl',
-      1 => 1416685547,
+      1 => 1416687720,
       2 => 'file',
     ),
   ),
@@ -15,21 +15,102 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.15',
   'unifunc' => 'content_5470e90b9a1728_57920936',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5470e90b9a1728_57920936')) {function content_5470e90b9a1728_57920936($_smarty_tpl) {?><!DOCTYPE html>
-<html>
+<?php if ($_valid && !is_callable('content_5470e90b9a1728_57920936')) {function content_5470e90b9a1728_57920936($_smarty_tpl) {?><?php if (!is_callable('smarty_function_jprass_config')) include 'D:\\PHProot\\jprass-sns\\core\\smarty\\plugins\\function.jprass_config.php';
+?><!DOCTYPE html>
+<html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="renderer" content="webkit">
-        <title>Jprass开源官方网站</title>
-        <meta name="description" content="Jprass开源官方网站,jprass开发框架,开发，原来如此简单！">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>登录到-<?php echo smarty_function_jprass_config(array('name'=>"site.title"),$_smarty_tpl);?>
+-Powered by JPrass</title>
+        <link type="text/css" href="Css/admin.css" rel="stylesheet">
+        <script type="text/javascript" src="../Script/jquery.min.js"></script>
+        <script type="text/javascript" src="../Script/jquery.form.js"></script>
+		<script src="../Script/jquery.form-validator.js"></script>
+        <style type="text/css">
+            .form-login {
+                position:absolute;top: 20%;left:45%;
+                background: #f7fbe9;
+                color:#333;
+                width:450px;
+                margin: 0 0 0 -167px;
+                padding-bottom:30px;
+                padding: 19px 29px 29px;
+                background-color: #fff;
+                border: 1px solid #e5e5e5;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+            }
+            .form-login h2{
+                text-align: center;
+            }
+        </style>
+        <script type="text/javascript">
+			$(document).ready(function() {
+				$.validate();
+				$('#loginName').focus();
+				$("#ajax-submit-form").ajaxForm({
+					beforeSubmit: function() {
+						$("#validator-msg").hide();
+					},
+					dataType: "json",
+					success: function(json) {
+						if (json.state) {
+							window.location.href = json.location;
+						} else {
+							$("#loginPwd").val("");
+							$("#captcha").val("");
+							captcha();
+							$("#validator-msg").html(json.message).show().addClass("validator-error");
+						}
+					}
+				});
+			});
+			function captcha() {
+				$('#captchaImage').attr('src', '../captcha.php?_=' + Math.random());
+			}
+        </script>
     </head>
     <body>
+        <div class="container">
+            <form class="form-login form form-aligned" id="ajax-submit-form" action="index.php?c=login" method="post">
+                <h2><image src="Css/logo.png" /></h2>
+                <div class="control-group">
+                    <label>用户名</label>
+                    <div class="controls">
+						<input type="text" name="loginName" id="loginName" data-rule="用户名:username" class="large" />
+					</div>
+                </div>
+                <div class="control-group">
+                    <label>密码</label>
+                    <div class="controls">
+						<input type="password" name="loginPwd" id="loginPwd" data-rule="密码:password" class="large" />
+					</div>
+				</div>
+                <div class="control-group">
+                    <label>验证码</label>
+                    <div class="controls"><input type="text" name="captcha" data-rule="验证码:captcha" data-rule-regexp="^([0-9]{4,6})$" id="captcha" class="mini" />
+						<a href="javascript:captcha();">看不清？换一张</a>
+					</div>
+				</div>
+                <div class="control-group">
+                    <label>&nbsp;</label><img id="captchaImage" src="../captcha.php" />	
+                </div>
+                <div class="control-group">
+                    <label>&nbsp;</label>
+                    <button class="btn" id="submit-btn" type="submit">登 录</button>
+                    <a href="#">忘记密码？</a>
+                </div>
+				<div id="validator-msg" style="display: none"></div>
+            </form>
+        </div>
     </body>
 </html><?php }} ?>
