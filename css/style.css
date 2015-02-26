@@ -1,0 +1,33 @@
+@charset "utf-8";
+/* CSS Document */
+/**************** 标签默认 ****************/
+*{margin:0;padding:0;font-family: STHeiti, 'Microsoft YaHei', arial, 宋体;}
+body{color:#333;min-width: 980px;background:#f1f4f5;font-size:10pt;line-height:1.8em;}
+img{border:0;}
+li{list-style:none;}
+input,textarea{border:1px solid #999;}
+h1,h2,h3,h4,h5,h6,th{font-weight:bold;color:#000;}
+a{text-decoration:none;color:#333;}
+a:hover{color:#999;}
+.clear {clear: both;height:0}
+.footer{line-height:28px;padding-top: 20px;}
+.wrapper {width:980px;margin: 0 auto;position: relative;}
+.header {height: 60px;margin-bottom: 30px;}
+.header .logo{background: url("../images/logo-big.jpg");display: block; height: 43px; width: 179px;text-indent: -99999px;overflow: hidden;float: left;margin: 20px 0 10px 0;}
+.header ul{float: right;margin-top: 25px;}
+.header li{float: left;padding: 0 10px;color: #aaa;}
+.header li a{color: #666;}
+
+.login-box{width: 360px;background: #fff;  border: 1px solid #cfd6de;box-shadow: 0 2px 2px #cfd6de;overflow: hidden;padding-bottom: 15px;float: left}
+.radiusimg {border: 1px solid #fff;width: 100px;height: 100px;margin: 29px auto;overflow: hidden;position: relative;}
+.radiusimg .shadow {background: url(../images/headershadow.png);width: 100px;height: 100px;z-index: 10;position: absolute;left: 0;top: 0;}
+.login-box .input-text {background: 0 0;font-size: 16px;height: 44px;line-height: 44px\9;padding: 0 0 0 15px;width: 296px;border: none;}
+.login-box dl dd{display:inline-block;position: relative;width: 296px;background: #FFF url(../images/bg.png) 0 -76px no-repeat;border: 1px solid #c0c7cd;border-radius: 3px;height: 44px;box-shadow: 0 0 1px #FFF;padding: 1px;margin: 8px 25px}
+.autoLogin{float: left;margin:8px 25px;display:inline-block}
+.getpassword{float: left;display: inline-block;margin:8px 0; color: #aaa}
+.login-btn,.login-btn{background: #4195d9;border: none;width: 296px;height: 46px;border-radius: 3px;margin: 8px 25px;font-size: 20px;color: #FFF;letter-spacing: 20px;text-align: center;cursor: pointer}
+.login-btn:hover{background: #1f7cc6;}
+.regbutton{background: #77af5c}
+.regbutton:hover{background:#62aa40}
+.main-column{float: right;background: #ccc;width: 600px;height: 469px;}
+.validator-error{padding: 6px 12px;display: block;line-height: 180%;background: #ffe5ed;border-radius: 4px;color: darkred;margin:10px;}
